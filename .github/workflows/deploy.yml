@@ -1,0 +1,31 @@
+name: Deploy Next.js Project
+
+on:
+  push:
+    branches:
+      - main  # Only run on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Specify your Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and export Next.js app
+        run: npm run deploy
+
+      - name: Deploy to your hosting provider
+        run: |
+          # Example for deploying to AWS S3 or another platform
+          # Replace with your hosting platform's deployment commands
+          aws s3 sync out/ s3://your-bucket-name --delete
