@@ -7,10 +7,6 @@ const nextConfig = {
       }
       return config;
     },
-    env: {
-      NODE_OPTIONS: "--max-old-space-size=4096", // Increase memory allocation for Node.js
-    },
   };
   
-  export default nextConfig;
-  
+export default nextConfig;
